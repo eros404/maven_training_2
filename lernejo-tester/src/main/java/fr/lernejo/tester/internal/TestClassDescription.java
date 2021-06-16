@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestClassDescription {
-    final Class<?> toDoClass;
+    private final Class<?> toDoClass;
 
     public TestClassDescription(Class<?> cl) {
         toDoClass = cl;
@@ -22,5 +22,9 @@ public class TestClassDescription {
             }
         }
         return list;
+    }
+
+    public Class<?> GetToDoClass() {
+        return toDoClass;
     }
 }

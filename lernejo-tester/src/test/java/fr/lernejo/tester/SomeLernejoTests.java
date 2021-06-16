@@ -9,11 +9,11 @@ public class SomeLernejoTests {
     }
 
     @TestMethod
-    public void ko() {
-
+    public void ko() throws IllegalStateException {
+        throw new IllegalStateException();
     }
 
-    public void none() throws IllegalStateException {
-        throw new IllegalStateException();
+    public void none() {
+
     }
 }

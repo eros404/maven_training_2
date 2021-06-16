@@ -9,18 +9,15 @@ import java.util.List;
 
 public class TestClassDescriptionLernejoTests {
     @TestMethod
-    public static void main(String[] args) {
+    public static void test() throws Exception {
         TestClassDescription testClassDescription = new TestClassDescription(SomeLernejoTests.class);
         List<Method> testMethods = testClassDescription.listTestMethods();
         try {
-            if (testMethods.size() == 2 && testMethods.contains(SomeLernejoTests.class.getMethod("ok")) && testMethods.contains(SomeLernejoTests.class.getMethod("ko"))) {
-                System.out.println("Test passed (TestClassDescriptionLernejoTests)");
-            }
-            else {
-                System.out.println("Test failed (TestClassDescriptionLernejoTests)");
+            if (testMethods.size() != 2 || !testMethods.contains(SomeLernejoTests.class.getMethod("ok")) || !testMethods.contains(SomeLernejoTests.class.getMethod("ko"))) {
+                throw new Exception();
             }
         } catch (NoSuchMethodException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

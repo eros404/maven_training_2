@@ -5,26 +5,23 @@ import fr.lernejo.tester.api.TestMethod;
 
 public class TestClassDiscovererLernejoTests {
     @TestMethod
-    public static void main(String[] args) {
+    public static void test() throws Exception {
         var testClassDiscover = new TestClassDiscoverer("fr.lernejo.tester");
         var testClasses = testClassDiscover.listTestClasses();
         int test = 0;
         for (var cl : testClasses) {
-            if (cl.toDoClass.getName().equals("fr.lernejo.tester.SomeLernejoTests")) {
+            if (cl.GetToDoClass().getName().equals("fr.lernejo.tester.SomeLernejoTests")) {
                 test += 1;
             }
-            if (cl.toDoClass.getName().equals("fr.lernejo.tester.TestClassDescriptionLernejoTests")) {
+            if (cl.GetToDoClass().getName().equals("fr.lernejo.tester.internal.TestClassDescriptionLernejoTests")) {
                 test += 50;
             }
-            if (cl.toDoClass.getName().equals("fr.lernejo.tester.TestClassDiscovererLernejoTests")) {
+            if (cl.GetToDoClass().getName().equals("fr.lernejo.tester.internal.TestClassDiscovererLernejoTests")) {
                 test += 900;
             }
         }
-        if (test == 951) {
-            System.out.println("Test passed (TestClassDiscovererLernejoTests)");
-        }
-        else {
-            System.out.println("Test failed (TestClassDiscovererLernejoTests)");
+        if (test != 951) {
+            throw new Exception();
         }
     }
 }
